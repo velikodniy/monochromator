@@ -16,6 +16,7 @@ namespace Monochromator
         private void GetPorts()
         {
             var ports = Port.GetPortNames();
+            comboBoxPort.Items.Clear();
             comboBoxPort.Items.AddRange(ports);
             try
             {
