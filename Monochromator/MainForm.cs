@@ -114,6 +114,9 @@ namespace Monochromator
             // Блокировка элементов управления
             EnableControls(false);
 
+            // Очиска формы
+            chart.Series[0].Points.Clear();
+
             // Асинхронный запрос данных
             var portName = comboBoxPort.SelectedItem as string;
             await Task.Run(()=>GetDataFromPort(portName, wl0, wl1, a0, astep));
