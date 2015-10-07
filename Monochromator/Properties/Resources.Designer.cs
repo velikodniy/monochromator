@@ -110,8 +110,7 @@ namespace Monochromator.Properties {
         ///2600	775
         ///2650	815
         ///2700	847
-        ///2750	875
-        ///.
+        ///2750	875.
         /// </summary>
         internal static string wavelengths {
             get {
