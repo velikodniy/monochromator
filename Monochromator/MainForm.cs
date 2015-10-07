@@ -13,6 +13,8 @@ namespace Monochromator
         {
             InitializeComponent();
             GetPorts();
+            // Регистрация обработчика получения точки
+            getDataPoint += Plot;
         }
 
         private void GetPorts()
@@ -50,6 +52,9 @@ namespace Monochromator
             buttonSaveData.Enabled = enabled;
         }
 
+        private delegate void GetDataPointHandler(double wl, double d);
+        private event GetDataPointHandler getDataPoint;
+
         private struct Pair { public double X, Y; };
         private List<Pair> data;
         private void GetDataFromPort(string portName, double wl0, double wl1, double a0, double astep)
@@ -60,13 +65,6 @@ namespace Monochromator
             data = new List<Pair>();
             double wl, d;
 
-            // Диапазон по оси абсцисс
-            Invoke((MethodInvoker)delegate ()
-            {
-                chart.ChartAreas[0].AxisX.Minimum = wl0;
-                chart.ChartAreas[0].AxisX.Maximum = wl1;
-            });
-
             using (var port = new Port(portName)) {
                 for (var a = a0; a <= a_end; a += astep)
                 {
@@ -76,13 +74,18 @@ namespace Monochromator
                         wl = WaveLength.FromDegrees(a);
                         // Добавляем данные в список
                         data.Add(new Pair{X=wl, Y=d});
-                        // Добавляем точку на график
-                        Invoke((MethodInvoker) delegate () {
-                            chart.Series[0].Points.AddXY(wl, d);
-                        });
+                        // Генерация события
+                        getDataPoint?.Invoke(wl, d);
                     }
                 }
             }
+        }
+        
+        private void Plot(double wl, double d)
+        {
+            Invoke((MethodInvoker)delegate () {
+                chart.Series[0].Points.AddXY(wl, d);
+            });
         }
 
         private async void buttonStart_Click(object sender, EventArgs e)
@@ -125,6 +128,9 @@ namespace Monochromator
 
             // Очиска формы
             chart.Series[0].Points.Clear();
+            // Диапазон по оси абсцисс
+            chart.ChartAreas[0].AxisX.Minimum = wl0;
+            chart.ChartAreas[0].AxisX.Maximum = wl1;
 
             // Асинхронный запрос данных
             var portName = comboBoxPort.SelectedItem as string;
