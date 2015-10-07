@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -45,13 +47,17 @@ namespace Monochromator
             comboBoxPort.Enabled = enabled;
             buttonRefresh.Enabled = enabled;
             buttonSaveImage.Enabled = enabled;
+            buttonSaveData.Enabled = enabled;
         }
 
+        private struct Pair { public double X, Y; };
+        private List<Pair> data;
         private void GetDataFromPort(string portName, double wl0, double wl1, double a0, double astep)
         {
             var a_begin = WaveLength.ToDegrees(wl0);    // Начальный измеряемый угол
             var a_end = WaveLength.ToDegrees(wl1);      // Конечный измеряемый угол
 
+            data = new List<Pair>();
             double wl, d;
 
             // Диапазон по оси абсцисс
@@ -68,6 +74,9 @@ namespace Monochromator
                     if (a > a_begin)
                     {
                         wl = WaveLength.FromDegrees(a);
+                        // Добавляем данные в список
+                        data.Add(new Pair{X=wl, Y=d});
+                        // Добавляем точку на график
                         Invoke((MethodInvoker) delegate () {
                             chart.Series[0].Points.AddXY(wl, d);
                         });
@@ -129,6 +138,14 @@ namespace Monochromator
         {
             saveImage.ShowDialog();
             chart.SaveImage(saveImage.FileName, ChartImageFormat.Png);
+        }
+
+        private void buttonSaveData_Click(object sender, EventArgs e)
+        {
+            saveData.ShowDialog();
+            using (var f = File.CreateText(saveData.FileName))
+                foreach (var d in data)
+                    f.WriteLine("{0};{1}", d.X, d.Y);
         }
     }
 }

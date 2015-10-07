@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.textBoxL0 = new System.Windows.Forms.TextBox();
             this.textBoxL1 = new System.Windows.Forms.TextBox();
@@ -51,6 +51,8 @@
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonSaveImage = new System.Windows.Forms.Button();
             this.saveImage = new System.Windows.Forms.SaveFileDialog();
+            this.buttonSaveData = new System.Windows.Forms.Button();
+            this.saveData = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,21 +61,21 @@
             this.chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.AxisX.Title = "Длина волны, нм";
-            chartArea2.AxisY.Title = "Данные";
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
+            chartArea1.AxisX.Title = "Длина волны, нм";
+            chartArea1.AxisY.Title = "Данные";
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(158, 12);
             this.chart.Name = "chart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.LabelAngle = 90;
-            series2.Legend = "Legend1";
-            series2.Name = "Данные";
-            this.chart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.LabelAngle = 90;
+            series1.Legend = "Legend1";
+            series1.Name = "Данные";
+            this.chart.Series.Add(series1);
             this.chart.Size = new System.Drawing.Size(694, 481);
             this.chart.TabIndex = 0;
             this.chart.Text = "Снимаемые измерения";
@@ -234,9 +236,9 @@
             // 
             // buttonSaveImage
             // 
-            this.buttonSaveImage.Location = new System.Drawing.Point(13, 244);
+            this.buttonSaveImage.Location = new System.Drawing.Point(12, 257);
             this.buttonSaveImage.Name = "buttonSaveImage";
-            this.buttonSaveImage.Size = new System.Drawing.Size(117, 23);
+            this.buttonSaveImage.Size = new System.Drawing.Size(118, 23);
             this.buttonSaveImage.TabIndex = 18;
             this.buttonSaveImage.Text = "Сохранить график";
             this.buttonSaveImage.UseVisualStyleBackColor = true;
@@ -248,11 +250,27 @@
             this.saveImage.Filter = "PNG|*.png";
             this.saveImage.Title = "Сохранить график...";
             // 
+            // buttonSaveData
+            // 
+            this.buttonSaveData.Location = new System.Drawing.Point(12, 287);
+            this.buttonSaveData.Name = "buttonSaveData";
+            this.buttonSaveData.Size = new System.Drawing.Size(118, 23);
+            this.buttonSaveData.TabIndex = 20;
+            this.buttonSaveData.Text = "Сохранить данные";
+            this.buttonSaveData.UseVisualStyleBackColor = true;
+            this.buttonSaveData.Click += new System.EventHandler(this.buttonSaveData_Click);
+            // 
+            // saveData
+            // 
+            this.saveData.FileName = "data.csv";
+            this.saveData.Filter = "CSV|*.csv";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 505);
+            this.Controls.Add(this.buttonSaveData);
             this.Controls.Add(this.buttonSaveImage);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.comboBoxPort);
@@ -302,6 +320,8 @@
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.Button buttonSaveImage;
         private System.Windows.Forms.SaveFileDialog saveImage;
+        private System.Windows.Forms.Button buttonSaveData;
+        private System.Windows.Forms.SaveFileDialog saveData;
     }
 }
 
