@@ -15,6 +15,7 @@ namespace Monochromator
             GetPorts();
             // Регистрация обработчика получения точки
             getDataPoint += Plot;
+            getDataPoint += Plot2;
         }
 
         private void GetPorts()
@@ -85,6 +86,13 @@ namespace Monochromator
         {
             Invoke((MethodInvoker)delegate () {
                 chart.Series[0].Points.AddXY(wl, d);
+            });
+        }
+
+        private void Plot2(double wl, double d)
+        {
+            Invoke((MethodInvoker)delegate () {
+                chart.Series[1].Points.AddXY(wl, Math.Log(d)*10);
             });
         }
 
