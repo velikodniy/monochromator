@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.textBoxL0 = new System.Windows.Forms.TextBox();
             this.textBoxL1 = new System.Windows.Forms.TextBox();
@@ -61,39 +61,39 @@
             this.chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.AxisX.Title = "Длина волны, нм";
-            chartArea1.AxisY.Title = "Данные";
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chart.Legends.Add(legend1);
+            chartArea2.AxisX.Title = "Длина волны, нм";
+            chartArea2.AxisY.Title = "Данные";
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chart.Legends.Add(legend2);
             this.chart.Location = new System.Drawing.Point(158, 12);
             this.chart.Name = "chart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.LabelAngle = 90;
-            series1.Legend = "Legend1";
-            series1.Name = "Данные";
-            this.chart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.LabelAngle = 90;
+            series2.Legend = "Legend1";
+            series2.Name = "Данные";
+            this.chart.Series.Add(series2);
             this.chart.Size = new System.Drawing.Size(694, 481);
             this.chart.TabIndex = 0;
             this.chart.Text = "Снимаемые измерения";
             // 
             // textBoxL0
             // 
-            this.textBoxL0.Location = new System.Drawing.Point(36, 32);
+            this.textBoxL0.Location = new System.Drawing.Point(32, 32);
             this.textBoxL0.Name = "textBoxL0";
-            this.textBoxL0.Size = new System.Drawing.Size(67, 20);
+            this.textBoxL0.Size = new System.Drawing.Size(71, 20);
             this.textBoxL0.TabIndex = 1;
             this.textBoxL0.Text = "415";
             this.textBoxL0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxL1
             // 
-            this.textBoxL1.Location = new System.Drawing.Point(36, 58);
+            this.textBoxL1.Location = new System.Drawing.Point(32, 58);
             this.textBoxL1.Name = "textBoxL1";
-            this.textBoxL1.Size = new System.Drawing.Size(67, 20);
+            this.textBoxL1.Size = new System.Drawing.Size(71, 20);
             this.textBoxL1.TabIndex = 2;
             this.textBoxL1.Text = "875";
             this.textBoxL1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -101,7 +101,7 @@
             // labelLambdaRange
             // 
             this.labelLambdaRange.AutoSize = true;
-            this.labelLambdaRange.Location = new System.Drawing.Point(9, 13);
+            this.labelLambdaRange.Location = new System.Drawing.Point(9, 12);
             this.labelLambdaRange.Name = "labelLambdaRange";
             this.labelLambdaRange.Size = new System.Drawing.Size(66, 13);
             this.labelLambdaRange.TabIndex = 3;
@@ -120,20 +120,22 @@
             // labelL0
             // 
             this.labelL0.AutoSize = true;
-            this.labelL0.Location = new System.Drawing.Point(12, 35);
+            this.labelL0.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelL0.Location = new System.Drawing.Point(9, 34);
             this.labelL0.Name = "labelL0";
-            this.labelL0.Size = new System.Drawing.Size(18, 13);
+            this.labelL0.Size = new System.Drawing.Size(17, 15);
             this.labelL0.TabIndex = 5;
-            this.labelL0.Text = "λ0";
+            this.labelL0.Text = "λ₀";
             // 
             // labelL1
             // 
             this.labelL1.AutoSize = true;
-            this.labelL1.Location = new System.Drawing.Point(12, 61);
+            this.labelL1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelL1.Location = new System.Drawing.Point(9, 60);
             this.labelL1.Name = "labelL1";
-            this.labelL1.Size = new System.Drawing.Size(18, 13);
+            this.labelL1.Size = new System.Drawing.Size(17, 15);
             this.labelL1.TabIndex = 6;
-            this.labelL1.Text = "λ1";
+            this.labelL1.Text = "λ₁";
             // 
             // labelL0Units
             // 
@@ -210,7 +212,7 @@
             // labelPort
             // 
             this.labelPort.AutoSize = true;
-            this.labelPort.Location = new System.Drawing.Point(12, 139);
+            this.labelPort.Location = new System.Drawing.Point(9, 139);
             this.labelPort.Name = "labelPort";
             this.labelPort.Size = new System.Drawing.Size(32, 13);
             this.labelPort.TabIndex = 15;
@@ -219,9 +221,9 @@
             // comboBoxPort
             // 
             this.comboBoxPort.FormattingEnabled = true;
-            this.comboBoxPort.Location = new System.Drawing.Point(53, 136);
+            this.comboBoxPort.Location = new System.Drawing.Point(47, 136);
             this.comboBoxPort.Name = "comboBoxPort";
-            this.comboBoxPort.Size = new System.Drawing.Size(77, 21);
+            this.comboBoxPort.Size = new System.Drawing.Size(83, 21);
             this.comboBoxPort.TabIndex = 16;
             // 
             // buttonRefresh
